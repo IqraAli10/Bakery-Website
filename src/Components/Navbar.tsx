@@ -1,8 +1,8 @@
 "use client"
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faCartShopping, faBars } from '@fortawesome/free-solid-svg-icons'; // Importing faBars for menu icon
 import { useState } from 'react';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false); // State to manage hamburger menu

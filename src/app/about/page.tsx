@@ -19,7 +19,7 @@ const About = () => {
             At Cozy Bakery, we bake with love! From freshly made cakes to delicious pastries,
             we are passionate about bringing the finest baked goods to your table. With a 
             focus on quality, we use only the best ingredients to ensure every bite is a 
-            delight. Whether you're celebrating a special occasion or just craving something 
+            delight. Whether you&apos;re celebrating a special occasion or just craving something 
             sweet, Cozy Bakery is here to satisfy your sweet tooth.
           </p>
         </div>
