@@ -1,42 +1,816 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
+/* ---------- Navbar CSS ---------- */
 
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --orange-clr: #E96C28;
+  --white-clr: #fff;
+  --black-clr: #000;
+  --grey-clr: #636363;
+  --light-grey: #c4c4c4;
+  --dawn-pink: #FAE7E5;
+  --frosted-mint: #DCFEF9;
+}
+
+header {
+  height: 13vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.logo-txt {
+  font-size: 1.7rem;
+  color: var(--orange-clr);
+  font-weight: bold;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+span {
+  color: var(--black-clr);
+}
+
+.navlist {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.2rem;
+  transition: max-height 0.3s ease; /* Smooth transition for menu */
+}
+
+li {
+  list-style: none;
+}
+
+.navlinks {
+  color: var(--black-clr);
+  font-weight: 500;
+}
+
+.active, .navlinks:hover {
+  color: var(--orange-clr);
+}
+
+.hamburger {
+  cursor: pointer;
+  display: none; /* Hide hamburger by default */
+}
+
+.burger {
+  background: var(--black-clr);
+  width: 2.2rem;
+  height: .25rem;
+  margin: .3rem;
+  border-radius: 2rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navlist {
+      display: none; /* Hide navlist by default on mobile */
+      flex-direction: column; /* Stack items vertically */
+      position: absolute; /* Position absolutely */
+      top: 13vh; /* Adjust top to sit below navbar */
+      left: 0; /* Align left */
+      right: 0; /* Align right */
+      background: white; /* Background color for menu */
+      z-index: 100; /* Ensure menu is above other content */
   }
+
+  .navlist.active {
+      display: flex; /* Show navlist when active */
+      max-height: 200px; /* Adjust based on content */
+      overflow: hidden; /* Hide overflow */
+  }
+
+  .hamburger {
+      display:flex;
+      columns: 1; /* Show hamburger on mobile */
+    
+  }
+}
+
+
+/* ---------Section-part--------- */
+
+/* -----------Hero-Section----- */
+
+
+.hero-section {
+  height: calc(100vh - 13vh);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row; /* Default for larger screens */
+}
+
+.content {
+  flex: 1;
+  text-align: left; /* Default text alignment for larger screens */
+}
+
+.image-container {
+  flex: 1;
+  position: relative;
+  display: flex; /* Center the image */
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background: var(--dawn-pink);
+  width: 42rem;
+  height: 44vh;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(100px);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: 4.5rem;
+  line-height: 5rem;
+  margin-top: 1rem;
+}
+
+.watch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+p {
+  color: var(--grey-clr);
+  margin-block: 1.5rem;
+  max-width: 500px;
+}
+
+.btn-container {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Button styles */
+button, .form-btn {
+  background: var(--orange-clr);
+  color: var(--white-clr);
+  border: 0.1rem solid var(--orange-clr);
+  padding: 0.55rem 1.5rem;
+  border-radius: 5rem;
+  font-size: 1rem;
+}
+
+[data-type='bordered-btn'] {
+  background: transparent;
+  color: var(--orange-clr);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hero-section {
+      flex-direction: column; /* Stack elements vertically on mobile */
+      height: auto; /* Allow height to adjust */
+      align-items: center; /* Center align content */
+      text-align: center; /* Center align text */
+  }
+
+  .content {
+      margin-bottom: 2rem; /* Space between text and image */
+  }
+
+  h1 {
+      font-size: 2.5rem; /* Smaller font size for mobile */
+      line-height: 3rem;
+  }
+
+  .image-container {
+      order: -1; /* Make image come after content */
+      width: 100%; /* Full width for image container */
+  }
+
+  img {
+      width: 80%; /* Adjust image size for mobile */
+      height: auto;
+  }
+
+  .btn-container {
+      justify-content: center; /* Center buttons in mobile view */
+      flex-direction: column; /* Stack buttons vertically */
+      gap: 1rem; /* Space between buttons */
+  }
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .row-container {
+      flex-direction: column; /* Stack elements vertically on mobile */
+      align-items: center; /* Center align items */
+      gap: 2rem; /* Reduce gap between elements */
+  }
+
+  .image-container {
+      width: 100%; /* Allow the image container to take full width */
+      display: flex; /* Center the image */
+      justify-content: center;
+  }
+
+  img {
+      width: 80%; /* Set image width to 80% of the container */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 1rem; /* Add border radius to the image */
+  }
+
+  .content {
+      text-align: center; /* Center align text */
+      max-width: 90%; /* Limit max width for better readability */
+  }
+
+  button {
+      padding: 0.5rem 1rem; /* Adjust button padding for mobile */
+      font-size: 1rem; /* Adjust button font size for mobile */
+      border-radius: 5rem; /* Rounded button corners */
+  }
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+p {
+  margin: 0.5rem 0; /* Add some margin for paragraphs */
+}
+
+
+/* -------store-section------ */
+
+
+.other-section{
+    padding-block: 5rem ;
+}
+
+.row-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+
+
+.column-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    font-size: 1.8rem;
+}
+
+[data-type='centered-txt']{
+    text-align: center;
+    max-width: 600px;
+    margin-block: .5rem;
+}
+
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+
+.card{
+    width: 10rem;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: .2s ease-in-out;
+    
+}
+[data-type='category']{
+    padding-block: 2.5rem;
+}
+
+.card:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 
+    0px 13px 20px -5px, 
+    rgba(0, 0, 0, .3 )
+    0px 8px 16px -8px;
+}
+
+
+
+
+/* ----------Featured-section-------- */
+
+h4{
+    font-weight: 600;
+    
+}
+
+[data-type='item']{
+    padding-bottom: 1.3rem;
+    overflow: hidden;
+    width: 11rem;
+}
+
+.image-part{
+    width: 100%;
+    height: 23vh;
+
+}
+
+.image-part img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail{
+    margin-top: 1rem;
+
+}
+
+/* Best sell food */
+
+@media (max-width: 768px) {
+  .row-container {
+      flex-direction: column; /* Stack elements vertically on mobile */
+      align-items: center; /* Center align items */
+      gap: 2rem; /* Reduce gap between elements */
+  }
+
+  .image-container {
+      width: 100%; /* Allow the image container to take full width */
+      display: flex; /* Center the image */
+      justify-content: center;
+  }
+
+  img {
+      width: 80%; /* Set image width to 80% of the container */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 1rem; /* Add border radius to the image */
+  }
+
+  .content {
+      text-align: center; /* Center align text */
+      max-width: 90%; /* Limit max width for better readability */
+  }
+
+  h2 {
+      font-size: 1.8rem; /* Adjust font size for mobile */
+  }
+
+  h4 {
+      font-size: 1.5rem; /* Adjust font size for mobile */
+  }
+
+  .rating {
+      display: flex; /* Align rating items horizontally */
+      justify-content: center; /* Center align rating */
+      align-items: center; /* Center align items vertically */
+      gap: 0.5rem; /* Space between price and stars */
+  }
+
+  p {
+      margin: 0.5rem 0; /* Add some margin for paragraphs */
+  }
+
+  button {
+      padding: 0.5rem 1rem; /* Adjust button padding for mobile */
+      font-size: 1rem; /* Adjust button font size for mobile */
+      border-radius: 5rem; /* Rounded button corners */
+  }
+}
+
+
+/* -------App-section----- */
+
+
+.app-img{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    height: 4.2rem;
+}
+
+
+/* -------best-sell-food-------- */
+
+.rating img{
+    width: 6rem;
+}
+
+.rating h4{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--orange-clr);
+    font-size: 1.3rem;
+   
+}
+
+.rating{
+   
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+
+/* -------Newsletter Section------ */
+
+.form-container{
+    margin-top: 1.2rem;
+    border: .02rem solid var(--orange-clr);
+    height: 3.5rem;
+    border-radius: 5rem;
+    padding: .25rem;
+}
+
+input[type='email']{
+    height: 100%;
+    border-radius: 5rem 0 0 5rem;
+    border: none;
+    font-size: 1rem;
+    padding-left: 1rem;
+}
+
+input:focus{
+    outline: none;
+}
+.btn1{
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+/* --------Footer-Section-------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ABOUT PAGE */
+
+
+
+
+
+.about-page {
+  padding: 2rem;
+  background-color: #fef9f3;
+  color: #333;
+  text-align: center;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-content h1 {
+  font-size: 3rem;
+  color: var(--orange-clr);
+}
+
+.about-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-images {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.about-image {
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.about-image:hover {
+  transform: scale(1.05);
+}
+
+.about-values {
+  margin-top: 3rem;
+}
+
+.about-values h2 {
+  font-size: 2.5rem;
+  color: #e67e22;
+  margin-bottom: 1rem;
+}
+
+.about-values p {
+  font-size: 1.2rem;
+  color: #777;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .about-images {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-image {
+    width: 80%;
+  }
+}
+
+
+
+
+
+
+
+
+
+.about-page {
+  padding: 2rem; /* Add padding around the whole page */
+  background-color: #f9f9f9; /* Light background color for better contrast */
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column; /* Stack content on top of each other */
+  align-items: center; /* Center align content */
+  gap: 2rem; /* Space between elements */
+}
+
+.about-content {
+  text-align: center; /* Center text */
+}
+
+.about-images {
+  display: flex; 
+  justify-content: center; /* Center images */
+  gap: 1rem; /* Space between images */
+}
+
+.about-values {
+  margin-top: 2rem; /* Add space above the values section */
+  padding: 1rem; /* Add padding for better spacing */
+  background-color: #fff; /* White background for the values section */
+  border-radius: 8px; /* Slightly round the corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+h1, h2 {
+  margin-bottom: 1rem; /* Space below headings */
+}
+
+p {
+  margin-bottom: 1rem; /* Space below paragraphs */
+}
+
+
+
+
+
+/* ?MENU PAGE */
+
+
+
+
+
+.menu-page {
+  padding: 40px 20px;
+  background-color: #f8f8f8; /* Light background color */
+  text-align: center;
+}
+
+.menu-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333; /* Darker text color */
+}
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.menu-item {
+  background-color: #fff; /* White background for each item */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  width: 300px; /* Fixed width */
+}
+
+.menu-item:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.menu-image {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+.menu-content {
+  padding: 15px;
+}
+
+.item-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--orange-clr); /* Highlight color */
+}
+
+.item-description {
+  color: #555; /* Slightly lighter text */
+  margin: 5px 0;
+}
+
+.item-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1b1b1b; /* Green for prices */
+}
+
+
+
+
+
+
+/* Restaurant page--------------- */
+
+
+
+
+/* styles/restaurant.css */
+
+.restaurant-page {
+  padding: 20px;
+  text-align: center;
+  background-color: #f8f8f8;
+}
+
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.restaurant-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px; /* Set a fixed width for each card */
+  transition: transform 0.3s;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+}
+
+.restaurant-image {
+  border-bottom: 2px solid #eaeaea;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+h2 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+
+p {
+  margin: 0 10px 20px;
+  color: #666;
+}
+
+
+
+
+
+
+
+
+/* Contact Page------------- */
+
+
+
+/* styles/contact.css */
+
+/* styles/contact.css */
+
+/* styles/contact.css */
+
+.contact-page {
+  min-height: 100vh; /* Puri height lene ke liye */
+  display: flex; /* Centering ke liye */
+  flex-direction: column; /* Content ko vertically stack karne ke liye */
+  justify-content: center; /* Content ko vertically center karne ke liye */
+  align-items: center; /* Content ko horizontally center karne ke liye */
+  text-align: center; /* Text alignment center */
+  background-image: url('/bakery4.jpg'); /* Yahan apne image ka sahi path dein */
+  background-size: cover; /* Puri screen cover karne ke liye */
+  background-position: center; /* Image ko center mein rakhne ke liye */
+  background-repeat: no-repeat; /* Image repeat na ho */
+  background-attachment: fixed; /* Image ko scroll ke sath na move hone dena */
+  color: white; /* Text color white rakhein takay readability achi ho */
+  padding: 40px; /* Padding for the form */
+}
+
+.contact-form {
+  max-width: 500px; /* Form ki maximum width */
+  width: 100%; /* Form ki width 100% karein */
+  background: rgba(0, 0, 0, 0.7); /* Slightly darker background for better readability */
+  padding: 30px;
+  border-radius: 8px; /* Rounded corners for the form */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Form fields ke beech space */
+}
+
+input, textarea {
+  width: 100%; /* Inputs ki width 100% karein */
+  padding: 10px; /* Padding for inputs */
+  border: none; /* No border for cleaner look */
+ 
+}
+
+.submit-button {
+  background-color: var(--orange-clr); /* Button color */
+  color: white; /* Button text color */
+  padding: 10px; /* Padding for button */
+  border: none; /* No border for button */
+  border-radius: 4px; /* Rounded corners for button */
+  cursor: pointer; /* Pointer cursor on hover */
 }
